@@ -1,8 +1,8 @@
 Title: About
 
-## CMSimfly 內容管理網誌
+## 40923243 協同產品設計實習網頁
 
-課程倉儲: <a href="https://github.com/chiamingyen/cmsimfly">https://github.com/chiamingyen/cmsimfly</a>
+課程倉儲: <a href="https://github.com/40923243/cd2022">hhttps://github.com/40923243/cd2022</a>
 
 內容管理: <a href="https://chiamingyen.github.io/cmsimfly/">https://chiamingyen.github.io/cmsimfly/</a>
 
