@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='W2.html'>W2</a><ul class='dropdown'><li class='has-children'><a href='Homepages.html'>Homepages</a><ul class='dropdown'><li><a href='甲班名單.html'>甲班名單</a><li><a href='乙班名單.html'>乙班名單</a></li></li></ul></ul><li class='has-children'><a href='W3.html'>W3</a><ul class='dropdown'><li><a href='HW03.html'>HW03</a><li><a href='HW04.html'>HW04</a><li><a href='HW05A.html'>HW05A</a><li><a href='HW05B.html'>HW05B</a></li></ul><li><a href='W6 _Guide.html'>W6 _Guide</a><li><a href='W7_Guide.html'>W7_Guide</a><li class='has-children'><a href='W10 任務.html'>W10 任務</a><ul class='dropdown'><li><a href='w10_block_ui.html'>w10_block_ui</a><li><a href='w10_nx_integ.html'>w10_nx_integ</a><li><a href='w10_ssh.html'>w10_ssh</a></li></ul><li><a href='tic_tae_toe.html'>tic_tae_toe</a><li><a href='W12任務.html'>W12任務</a><li class='has-children'><a href='W13.html'>W13</a><ul class='dropdown'><li><a href='online.html'>online</a></li></ul><li><a href='W14.html'>W14</a><li><a href='W15.html'>W15</a><li><a href='W16.html'>W16</a><li><a href='期末總結.html'>期末總結</a><li class='has-children'><a href='NX_Guide.html'>NX_Guide</a><ul class='dropdown'><li><a href='3D圖檔轉成工程圖.html'>3D圖檔轉成工程圖</a></li></ul><li><a href='midterm.html'>midterm</a><li><a href='RUN.html'>RUN</a><li><a href='History.html'>History</a><li><a href='Microsoft Teams 作業.html'>Microsoft Teams 作業</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='w2.html'>w2</a><ul class='dropdown'><li class='has-children'><a href='Homepages.html'>Homepages</a><ul class='dropdown'><li><a href='甲班名單.html'>甲班名單</a><li><a href='乙班名單.html'>乙班名單</a></li></li></ul></ul><li class='has-children'><a href='w3.html'>w3</a><ul class='dropdown'><li><a href='HW03.html'>HW03</a><li><a href='HW04.html'>HW04</a><li><a href='HW05A.html'>HW05A</a><li><a href='HW05B.html'>HW05B</a></li></ul><li><a href='W6 _Guide.html'>W6 _Guide</a><li><a href='W7_Guide.html'>W7_Guide</a><li class='has-children'><a href='W10 任務.html'>W10 任務</a><ul class='dropdown'><li><a href='w10_block_ui.html'>w10_block_ui</a><li><a href='w10_nx_integ.html'>w10_nx_integ</a><li><a href='w10_ssh.html'>w10_ssh</a></li></ul><li><a href='tic_tae_toe.html'>tic_tae_toe</a><li><a href='w12.html'>w12</a><li class='has-children'><a href='w13.html'>w13</a><ul class='dropdown'><li><a href='online.html'>online</a></li></ul><li><a href='w14.html'>w14</a><li><a href='w15.html'>w15</a><li><a href='w16.html'>w16</a><li><a href='期末總結.html'>期末總結</a><li class='has-children'><a href='NX_Guide.html'>NX_Guide</a><ul class='dropdown'><li><a href='3D圖檔轉成工程圖.html'>3D圖檔轉成工程圖</a></li></ul><li><a href='midterm.html'>midterm</a><li><a href='RUN.html'>RUN</a><li><a href='History.html'>History</a><li><a href='Microsoft Teams 作業.html'>Microsoft Teams 作業</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,11 +139,314 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W14 << <a href='W14.html'>Previous</a> <a href='W16.html'>Next</a> >> W16<br /><h1>W15</h1>
+    <div id="tipue_search_content">w14 << <a href='w14.html'>Previous</a> <a href='w16.html'>Next</a> >> w16<br /><h1>w15</h1>
 <p>作動影片</p>
 <p><iframe allowfullscreen="allowfullscreen" frameborder="0" height="360" src="https://40923243.github.io/cd2022/downloads/w15%20%E4%BD%9C%E5%8B%95.mp4" video="mp4" width="640"></iframe></p>
 <hr/>
-<p>手臂程式 吸盤程式</p><br />W14 << <a href='W14.html'>Previous</a> <a href='W16.html'>Next</a> >> W16</div>
+<p>操作按鈕</p>
+<p>k 逆時針轉動 i順時針轉動 h 往前移動 j 往後移動 f 往下移動 g 往上移動 p 吸起/放下</p><p>手臂程式</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+    axis1=sim.getObject('/motor1')
+    axis2=sim.getObject('/motor2')
+    axis3=sim.getObject('/motor6')
+    suctionPad=sim.getObject('/suctionPad')
+    rotation1 = 0
+    rotation2 = 0
+    rotation3 = 0
+    deg = math.pi/180.
+    enableSuctionPad(true)
+end
+function enableSuctionPad(enable)
+    -- use the suctionPad object to pass the variable activity value
+    -- if enable = true, the activity = 'on'
+    if enable then
+        sim.writeCustomDataBlock(suctionPad,'activity','on')
+    else
+        sim.writeCustomDataBlock(suctionPad,'activity','off')
+    end
+end
+function sysCall_actuation() 
+--[[
+    rotation1 = rotation1 + 1*deg
+    print(rotation1)
+    sim.setJointPosition(axis1, -rotation1)
+    sim.setJointPosition(axis2, -rotation1)
+]]
+    message, auxiliaryData=sim.getSimulatorMessage()
+    while message ~= -1 do
+        key=auxiliaryData[1]
+        sim.addStatusbarMessage('user press key:'..key)
+        if (message==sim.message_keypress) then
+           --if (auxiliaryData[1]==112) then --p activate the suction pad
+            if (auxiliaryData[1]==string.byte('p')) then
+                -- if key p pressed activate the suction mode
+--sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),'active','true')
+                enableSuctionPad(true)
+            end -- if p
+            if (auxiliaryData[1]==string.byte('q')) then --q deactivate the suction pad
+                -- if key q pressed deactivate the suction mode
+--sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),'active','false')
+                enableSuctionPad(false)
+            end -- if q
+            if (auxiliaryData[1]==string.byte('k')) then --k right turn in degree
+                -- if key k pressed axis1 angle adds 2 degrees
+                 rotation1 = rotation1 + 1*deg
+                 --sim.setJointPosition(axis1, rotation1)
+                 sim.setJointTargetPosition(axis1, rotation1)
+            end -- if k
+            if (auxiliaryData[1]==string.byte('l')) then --l left turn in degree
+                -- if key l pressed axis1 angle substract 2 degrees
+                 rotation1 = rotation1 - 1*deg
+                 --sim.setJointPosition(axis1, rotation1)
+                 sim.setJointTargetPosition(axis1, rotation1)
+            end -- if l
+-- for joint2 start ##########################################################
+            if (auxiliaryData[1]== string.byte("h")) then --r right turn in degree
+                -- if key r pressed axis1 angle adds 2 degrees
+                 rotation2 = rotation2 + 1*deg
+                 --sim.setJointPosition(axis2, rotation2)
+                 sim.setJointTargetPosition(axis2, rotation2)
+            end -- if k
+            if (auxiliaryData[1]==string.byte("j")) then
+                -- if key j pressed axis2 angle substract 2 degrees
+                 rotation2 = rotation2 - 1*deg
+                 --sim.setJointPosition(axis2, rotation2)
+                 sim.setJointTargetPosition(axis2, rotation2)
+            end -- if j
+-- for joint2 end ##########################################################
+-- for joint3 start ##########################################################
+            if (auxiliaryData[1]== string.byte("f")) then
+                -- if key f pressed axis3 angle adds 2 degrees
+                 rotation3 = rotation3 + 1*deg
+                 --sim.setJointPosition(axis3, rotation3)
+                 sim.setJointTargetPosition(axis3, rotation3)
+            end -- if f
+            if (auxiliaryData[1]==string.byte("g")) then
+                -- if key g pressed axis3 angle substract 2 degrees
+                 rotation3 = rotation3 - 1*deg
+                 --sim.setJointPosition(axis3, rotation3)
+                 sim.setJointTargetPosition(axis3, rotation3)
+            end -- if g
+-- for joint2 end ##########################################################
+            if (auxiliaryData[1]==100) then --d suction pad down
+                -- if key d pressed axis3 will down 0.05 m
+                 distance3 = distance3 - 0.05
+                 sim.setJointPosition(axis3, distance3)
+            end -- if d
+            if (auxiliaryData[1]==117) then --u suction pad up
+                -- if key u pressed axis3 will up 0.05 m
+                 distance3 = distance3 + 0.05
+                 sim.setJointPosition(axis3, distance3)
+            end -- if u
+            if (auxiliaryData[1]==99) then --c coordinate of block
+                blockPosition = sim.getObjectPosition(block, BaseFrame)
+                sim.addStatusbarMessage("coordinate:"..table_to_string(blockPosition))
+            end --if c
+       end  -- if
+    message, auxiliaryData=sim.getSimulatorMessage()
+    end -- while
+end -- function
+
+function sysCall_sensing() 
+--[[
+    -- Read Proximity sensor (0= nothing detected, 1 = object detected)
+    local res = sim.readProximitySensor(proximity)
+
+    -- Check if possible to insert an new box
+    if (sim.getSimulationTime()-T_last_inserted &gt; T_insert) and not hasStopped then
+        insertBox()
+    end
+
+    -- If proximity sensor detects an object, stop the belt, stop inserting objects
+    if res == 1 and not hasStopped then
+        if boolList[1] then
+            sim.setScriptSimulationParameter(sim.handle_self,"conveyorBeltVelocity",0)
+            deltaTime = sim.getSimulationTime()-T_last_inserted
+            hasStopped = true
+        else
+            local box = table.remove(boxList,1)
+            local boxDummy = table.remove(boxDummyList,1)
+            table.remove(boolList,1)
+
+            sim.removeObject(box)
+            sim.removeObject(boxDummy)
+        end
+    end
+
+    -- If proximity sensor detects nothing and belt has stopped, start belt, continue inserting
+    if res == 0 and hasStopped then
+        sim.setScriptSimulationParameter(sim.handle_self,"conveyorBeltVelocity",beltSpeed)
+        hasStopped = false
+        T_last_inserted = sim.getSimulationTime()-deltaTime
+    end
+    
+]]--
+end
+function sysCall_sensing()
+    -- put your sensing code here
+end
+function sysCall_cleanup()
+    -- do some clean-up here
+end
+-- Convert a lua table into a lua syntactically correct string
+function table_to_string(tbl)
+    local result = "{"
+    for k, v in pairs(tbl) do
+        -- Check the key type (ignore any numerical keys - assume its an array)
+        if type(k) == "string" then
+            result = result.."[\""..k.."\"]".."="
+        end
+        -- Check the value type
+        if type(v) == "table" then
+            result = result..table_to_string(v)
+        elseif type(v) == "boolean" then
+            result = result..tostring(v)
+        else
+            v = round(v, 4)
+            result = result.."\""..v.."\""
+        end
+        result = result..","
+    end
+    -- Remove leading commas from the result
+    if result ~= "" then
+        result = result:sub(1, result:len()-1)
+    end
+    return result.."}"
+end
+function round(x, n)
+    n = math.pow(10, n or 0)
+    x = x * n
+    if x &gt;= 0 then x = math.floor(x + 0.5) else x = math.ceil(x - 0.5) end
+    return x / n
+end
+function insertBox()
+    -- Generate random numbers
+    local rand1 = math.random()
+    local rand2 = math.random()
+    local rand3 = math.random()
+    -- Generate random disturbances on position and orientation
+    local dx = (2*rand1-1)*0.1
+    local dy = (2*rand2-1)*0.1
+    local dphi = (2*rand3-1)*0.5
+    local disturbedCoordinates = {0,0,0}
+    disturbedCoordinates[1] = insertCoordinate[1]+dx
+    disturbedCoordinates[2] = insertCoordinate[2]+dy
+    disturbedCoordinates[3] = insertCoordinate[3]
+    -- Copy and paste box and boxDummy
+    local insertedObjects = sim.copyPasteObjects({box,boxDummy},0)
+    -- Update last inserted box time
+    T_last_inserted = sim.getSimulationTime()
+    -- Move and rotate
+    sim.setObjectPosition(insertedObjects[1],-1,disturbedCoordinates)
+    sim.setObjectOrientation(insertedObjects[1],-1,{0,0,dphi})
+    -- Store handles to boxes and dummies
+    table.insert(boxList,insertedObjects[1])
+    table.insert(boxDummyList,insertedObjects[2]) 
+    -- Decide if object is good or bad
+    local decision = math.random() 
+    if decision &lt;= goodPercentage then
+    -- Object is good, assign goodColor
+        sim.setShapeColor(insertedObjects[1],nil,sim.colorcomponent_ambient_diffuse,goodColor)
+        table.insert(boolList,true)
+    else
+    -- Object is bad, assign random color
+        sim.setShapeColor(insertedObjects[1],nil,sim.colorcomponent_ambient_diffuse,{rand1,rand2,rand3})
+        table.insert(boolList,false)
+    end
+end
+-- See the user manual or the available code snippets for additional callback functions and details</pre>
+<p></p>
+<hr/><p>吸盤程式</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    s=sim.getObject('./Sensor')
+    l=sim.getObject('./LoopClosureDummy1')
+    l2=sim.getObject('./LoopClosureDummy2')
+    b=sim.getObject('.')
+    suctionPad=sim.getObject('/suctionPad')
+    suctionPadLink=sim.getObject('./Link')
+    infiniteStrength=true
+    maxPullForce=3
+    maxShearForce=1
+    maxPeelTorque=0.1
+    enabled=true
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+end
+function sysCall_cleanup() 
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+end 
+function sysCall_sensing() 
+    parent=sim.getObjectParent(l)
+    -- use the suctionPad to pass the activity variable 
+    local on = sim.readCustomDataBlock(suctionPad,'activity')
+    if on =="on" then
+        enabled = true
+    else
+        enabled = false
+    end
+    -- keep the original suctionpad script
+    if not enabled then
+        if (parent~=b) then
+            sim.setLinkDummy(l,-1)
+            sim.setObjectParent(l,b,true)
+            m=sim.getObjectMatrix(l2,-1)
+            sim.setObjectMatrix(l,-1,m)
+        end
+    else
+        if (parent==b) then
+            -- Here we want to detect a respondable shape, and then connect to it with a force sensor (via a loop closure dummy dummy link)
+            -- However most respondable shapes are set to "non-detectable", so "sim.readProximitySensor" or similar will not work.
+            -- But "sim.checkProximitySensor" or similar will work (they don't check the "detectable" flags), but we have to go through all shape objects!
+            index=0
+            while true do
+                shape=sim.getObjects(index,sim.object_shape_type)
+                if (shape==-1) then
+                    break
+                end
+                if (shape~=b) and (sim.getObjectInt32Param(shape,sim.shapeintparam_respondable)~=0) and (sim.checkProximitySensor(s,shape)==1) then
+                    -- Ok, we found a respondable shape that was detected
+                    -- We connect to that shape:
+                    -- Make sure the two dummies are initially coincident:
+                    sim.setObjectParent(l,b,true)
+                    m=sim.getObjectMatrix(l2,-1)
+                    sim.setObjectMatrix(l,-1,m)
+                    -- Do the connection:
+                    sim.setObjectParent(l,shape,true)
+                    sim.setLinkDummy(l,l2)
+                    break
+                end
+                index=index+1
+            end
+        else
+            -- Here we have an object attached
+            if (infiniteStrength==false) then
+                -- We might have to conditionally beak it apart!
+                result,force,torque=sim.readForceSensor(suctionPadLink) -- Here we read the median value out of 5 values (check the force sensor prop. dialog)
+                if (result&gt;0) then
+                    breakIt=false
+                    if (force[3]&gt;maxPullForce) then breakIt=true end
+                    sf=math.sqrt(force[1]*force[1]+force[2]*force[2])
+                    if (sf&gt;maxShearForce) then breakIt=true end
+                    if (torque[1]&gt;maxPeelTorque) then breakIt=true end
+                    if (torque[2]&gt;maxPeelTorque) then breakIt=true end
+                    if (breakIt) then
+                        -- We break the link:
+                        sim.setLinkDummy(l,-1)
+                        sim.setObjectParent(l,b,true)
+                        m=sim.getObjectMatrix(l2,-1)
+                        sim.setObjectMatrix(l,-1,m)
+                    end
+                end
+            end
+        end
+    end
+end </pre>
+<p><br/><br/></p><br />w14 << <a href='w14.html'>Previous</a> <a href='w16.html'>Next</a> >> w16</div>
         
     <!-- footer -->
       <div class="container">
